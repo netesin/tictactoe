@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="fragment" content="!">
+    <base href="/">
+    <title>Tic-tac-toe</title>
+
+    {% block head %}
+        <style>
+            {{ include('@App/index.css.twig') }}
+        </style>
+    {% endblock %}
+
+    <link rel="stylesheet" href="{{ asset("bundles/app/lib/font-awesome/css/font-awesome.min.css") }}">
+
+</head>
+
+<body ng-controller="MainController as $ctrl">
+
+<div class="loader" id="loader">
+    <div class="text">
+        <i class="fa fa-cog fa-spin"></i>
+        Loading, please wait...
+    </div>
+</div>
+
+<div id="main" style="display: none">
+
+    <div class="title">Game Tic-tac-toe</div>
+
+    <div class="menu" ng-hide="$ctrl.isGame">
+        <div class="btn new" ng-click="$ctrl.startNewGame()">New game</div>
+        <div class="btn continue" ng-if="$ctrl.continue" ng-click="$ctrl.continueGame()">Continue game</div>
+    </div>
+
+    <div class="game" ng-show="$ctrl.isGame">
+
+        <div class="btn new" ng-click="$ctrl.startNewGame()">New</div>
+
+        <div class="winner" ng-if="$ctrl.winnerMsg">
+            {{ '{{ $ctrl.winnerMsg }}' }}
+            <br>
+            <br>
+            <br>
+            <div class="btn new" ng-click="$ctrl.startNewGame()">New game</div>
+        </div>
+
+        <div class="playing-field">
+
+            <div class="cell" ng-class="{empty: !$ctrl.cells.c1}" ng-click="$ctrl.userMove('c1')">
+                <i class="fa fa-close" ng-show="$ctrl.cells.c1 === 'X'"></i>
+                <i class="fa fa-circle-o" ng-show="$ctrl.cells.c1 === 'O'"></i>
+            </div>
+
+            <div class="cell" ng-class="{empty: !$ctrl.cells.c2}" ng-click="$ctrl.userMove('c2')">
+                <i class="fa fa-close" ng-if="$ctrl.cells['c2'] === 'X'"></i>
+                <i class="fa fa-circle-o" ng-if="$ctrl.cells['c2'] === 'O'"></i>
+            </div>
+
+            <div class="cell" ng-class="{empty: !$ctrl.cells.c3}" ng-click="$ctrl.userMove('c3')">
+                <i class="fa fa-close" ng-if="$ctrl.cells['c3'] === 'X'"></i>
+                <i class="fa fa-circle-o" ng-if="$ctrl.cells['c3'] === 'O'"></i>
+            </div>
+
+            <div class="cell" ng-class="{empty: !$ctrl.cells.c4}" ng-click="$ctrl.userMove('c4')">
+                <i class="fa fa-close" ng-if="$ctrl.cells['c4'] === 'X'"></i>
+                <i class="fa fa-circle-o" ng-if="$ctrl.cells['c4'] === 'O'"></i>
+            </div>
+
+            <div class="cell" ng-class="{empty: !$ctrl.cells.c5}" ng-click="$ctrl.userMove('c5')">
+                <i class="fa fa-close" ng-if="$ctrl.cells['c5'] === 'X'"></i>
+                <i class="fa fa-circle-o" ng-if="$ctrl.cells['c5'] === 'O'"></i>
+            </div>
+
+            <div class="cell" ng-class="{empty: !$ctrl.cells.c6}" ng-click="$ctrl.userMove('c6')">
+                <i class="fa fa-close" ng-if="$ctrl.cells['c6'] === 'X'"></i>
+                <i class="fa fa-circle-o" ng-if="$ctrl.cells['c6'] === 'O'"></i>
+            </div>
+
+            <div class="cell" ng-class="{empty: !$ctrl.cells.c7}" ng-click="$ctrl.userMove('c7')">
+                <i class="fa fa-close" ng-if="$ctrl.cells['c7'] === 'X'"></i>
+                <i class="fa fa-circle-o" ng-if="$ctrl.cells['c7'] === 'O'"></i>
+            </div>
+
+            <div class="cell" ng-class="{empty: !$ctrl.cells.c8}" ng-click="$ctrl.userMove('c8')">
+                <i class="fa fa-close" ng-if="$ctrl.cells['c8'] === 'X'"></i>
+                <i class="fa fa-circle-o" ng-if="$ctrl.cells['c8'] === 'O'"></i>
+            </div>
+
+            <div class="cell" ng-class="{empty: !$ctrl.cells.c9}" ng-click="$ctrl.userMove('c9')">
+                <i class="fa fa-close" ng-if="$ctrl.cells['c9'] === 'X'"></i>
+                <i class="fa fa-circle-o" ng-if="$ctrl.cells['c9'] === 'O'"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="scope" ng-if="$ctrl.scope">
+        <span>You: {{ '{{ $ctrl.scope.X }}' }} </span>
+        <span>Comp: {{ '{{ $ctrl.scope.O }}' }} </span>
+        <span>Draw: {{ '{{ $ctrl.scope.XO }}' }} </span>
+    </div>
+
+</div>
+
+<script src="{{ asset('bundles/app/lib/requirejs/requirejs.js') }}" data-main="bundles/app/js/config.js"></script>
+</body>
+</html>

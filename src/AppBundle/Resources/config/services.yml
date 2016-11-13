@@ -1,0 +1,7 @@
+services:
+
+    # Game servicel
+    game:
+        class: AppBundle\Service\Game
+        calls:
+            - [setContainer, ['@service_container']]
