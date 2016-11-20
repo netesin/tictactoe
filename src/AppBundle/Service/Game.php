@@ -212,18 +212,6 @@ class Game implements ContainerAwareInterface
     }
 
     /**
-     * Get game scope.
-     *
-     * @return array
-     */
-    public function setScope()
-    {
-        $session = $this->container->get('session');
-
-        return $session->get('game.scope', ['X' => 0, 'O' => 0, 'XO' => 0]);
-    }
-
-    /**
      * Get winner.
      *
      * @return string|null null - no winner, X - user winner, O - comp winner
